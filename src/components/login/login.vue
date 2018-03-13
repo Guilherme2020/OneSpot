@@ -10,7 +10,7 @@
 	   		</v-form>
 			<v-btn block light >Entrar</v-btn>
 
-	   		<v-btn block light>Facebook</v-btn>
+	   		<v-btn block light>Entrar pelo Facebook</v-btn>
 	</v-container>
 			<!-- <v-form v-model="valid" ref="form" lazy-validation>
 				<v-text-field
