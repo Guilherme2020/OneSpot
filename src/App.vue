@@ -14,14 +14,5 @@
 export default {}
 </script>
 <style >
-	.v-jumbotron{
-		/* height: 900px; */
-		 /* height: 1000px; */
-	}
-	.content--wrap {
-	    -webkit-box-flex: 1;
-	    -ms-flex: 1 1 auto;
-	    flex: 1 1 auto;
-    /* max-width: 100%; */
-	}
+	
 </style>

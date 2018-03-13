@@ -1,16 +1,40 @@
 <template>
-	<v-container>
+	<v-container fluid>
 		<v-layout column align-center>
 			<h1 class="app-title"><span class="dot">&period;</span>OneSpot</h1>
 		</v-layout>
-			<v-form class="mb-3">
-		 		<v-text-field  label="Usuário" color="white"></v-text-field>
-		 		<v-text-field label="Senha" color="white"></v-text-field>
+			<v-form v-model="valid" lazy-validation ref="form" class="mb-3" >
+		 		<v-text-field    v-model="name"  label="Usuário do Spotify" color="white"></v-text-field>
+		 		<v-text-field v-model="senha"   :append-icon="e1 ? 'visibility' : 'visibility_off'"
+          :append-icon-cb="() => (e1 = !e1)"   :type="e1 ? 'password' : 'text'"  label="Senha" color="white"></v-text-field>
+				<v-btn
 
+					block
+					light
+					style="color:#E33AEC;"
+					@click="submit"
+					:disabled="!valid"
+
+
+				>
+					LOGIN
+				</v-btn>
 	   		</v-form>
-			<v-btn block light >Entrar</v-btn>
 
-	   		<v-btn block light>Entrar pelo Facebook</v-btn>
+			<br>
+
+
+
+			<br>
+
+	   		<v-btn
+			block light
+			style="color:#E33AEC;"
+			@click="submit"
+			:disabled="!valid"
+				>
+				LOGIN PELO FACEBOOK
+		</v-btn>
 	</v-container>
 			<!-- <v-form v-model="valid" ref="form" lazy-validation>
 				<v-text-field
@@ -54,19 +78,11 @@
   export default {
     data: () => ({
       valid: false,
+	  e1: false,
       name: '',
-	  senha:'',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-      ],
-
-    }),
+	  senha:''
+	  // password: 'Password'
+	}),
 
     methods: {
       submit () {
@@ -88,24 +104,15 @@
 </script>
 
 <style scoped>
-
-.theme--light .input-group:not(.input-group--error) label, .application .theme--light.input-group:not(.input-group--error) label {
-    /* color: rgba(0,0,0,0.54); */
-    color: white;
-}
-.v-text-field .label{
-	color:white;
+.linha{
+	width: 100%;
+	color:black;
 }
 
-form{
-	margin-left: 3%;
-	margin-right: 27%;
-	margin-top: 5%;
-}
-.theme--light .btn.btn--disabled:not(.btn--icon):not(.btn--flat), .application .theme--light.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {
+/* .theme--light .btn.btn--disabled:not(.btn--icon):not(.btn--flat), .application .theme--light.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {
     background-color: #940099;
     width: 99%;
-}
+} */
 .app-title {
 	font-family: ROBOTO;
 	font-weight: 300;
@@ -114,7 +121,7 @@ form{
 	font-size: 60pt;
 	line-height: 64px;
 	letter-spacing: 0px;
-	margin-top: 20%;
+	margin-top: 10%;
 }
 .dot {
 	font-size: 130pt;
