@@ -31,43 +31,11 @@
 			block light
 			style="color:#E33AEC;"
 			@click="submit"
-			:disabled="!valid"
 				>
 				LOGIN PELO FACEBOOK
 		</v-btn>
 	</v-container>
-			<!-- <v-form v-model="valid" ref="form" lazy-validation>
-				<v-text-field
-					label="Usuário do Spotify"
-					v-model="name"
-					:rules="nameRules"
-					:counter="10"
-					required
-					style="color:white;"
-				>
-				</v-text-field>
-				<v-text-field
-					label="Senha"
-					v-model="senha"
-					:rules="emailRules"
-					required
 
-				>
-				</v-text-field>
-
-				<v-btn
-					@click="submit"
-					:disabled="!valid"
-					>
-					LOGIN
-				</v-btn>
-				<v-btn
-				@click="submit"
-				@color:white;
-				>
-						LOGIN COM FACEBOOK
-				</v-btn>
-		</v-form> -->
 
 
 </template>
@@ -81,7 +49,6 @@
 	  e1: false,
       name: '',
 	  senha:''
-	  // password: 'Password'
 	}),
 
     methods: {
