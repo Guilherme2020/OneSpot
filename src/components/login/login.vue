@@ -2,8 +2,17 @@
 	<v-container>
 		<v-layout column align-center>
 			<h1 class="app-title"><span class="dot">&period;</span>OneSpot</h1>
+		</v-layout>
+			<v-form class="mb-3">
+		 		<v-text-field  label="Usuário" color="white"></v-text-field>
+		 		<v-text-field label="Senha" color="white"></v-text-field>
 
-			<v-form v-model="valid" ref="form" lazy-validation>
+	   		</v-form>
+			<v-btn block light >Entrar</v-btn>
+
+	   		<v-btn block light>Facebook</v-btn>
+	</v-container>
+			<!-- <v-form v-model="valid" ref="form" lazy-validation>
 				<v-text-field
 					label="Usuário do Spotify"
 					v-model="name"
@@ -34,9 +43,9 @@
 				>
 						LOGIN COM FACEBOOK
 				</v-btn>
-		</v-form>
-	</v-layout>
-</v-container>
+		</v-form> -->
+
+
 </template>
 
 <script>
