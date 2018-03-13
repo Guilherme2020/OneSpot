@@ -11,7 +11,7 @@
 
 					block
 					light
-					style="color:#E33AEC;"
+					style="color:#BD10E0;"
 					@click="submit"
 					:disabled="!valid"
 
@@ -29,7 +29,7 @@
 
 	   		<v-btn
 			block light
-			style="color:#E33AEC;"
+			style="color:#BD10E0;"
 			@click="submit"
 				>
 				LOGIN PELO FACEBOOK
