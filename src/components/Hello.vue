@@ -15,3 +15,4 @@
     </v-slide-y-transition>
   </v-container>
 </template>
+<img src="/src/static/img/Logo.svg" alt="">

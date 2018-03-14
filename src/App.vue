@@ -2,7 +2,7 @@
 	<v-app dark>
 		<v-content>
 
-			<v-jumbotron gradient="to top, #600055, #ba00a4" height="100%">
+			<v-jumbotron style="height:900px" gradient="to top, #6B0072, #D61CDB">
 				  <router-view></router-view>
 			</v-jumbotron>
 		</v-content>
