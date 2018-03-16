@@ -3,71 +3,80 @@
 		<v-layout column align-center>
 			<h1 class="app-title"><span class="dot">&period;</span>OneSpot</h1>
 		</v-layout>
-			<v-form v-model="valid" lazy-validation ref="form" class="mb-3" >
-		 		<v-text-field    v-model="name"  label="Usuário do Spotify" color="white"></v-text-field>
-		 		<v-text-field v-model="senha"   :append-icon="e1 ? 'visibility' : 'visibility_off'"
-          :append-icon-cb="() => (e1 = !e1)"   :type="e1 ? 'password' : 'text'"  label="Senha" color="white"></v-text-field>
-				<v-btn
+		<v-form v-model="valid" lazy-validation ref="form" class="mb-3" >
+			<v-text-field    v-model="name"  label="Usuário do Spotify" color="white"></v-text-field>
+			<v-text-field v-model="senha"   :append-icon="e1 ? 'visibility' : 'visibility_off'"
+			:append-icon-cb="() => (e1 = !e1)"   :type="e1 ? 'password' : 'text'"  label="Senha" color="white"></v-text-field>
+			<v-btn
 
-					block
-					light
-					style="color:#BD10E0;"
-					@click="submit"
-					:disabled="!valid"
-
-
-				>
-					LOGIN
-				</v-btn>
-	   		</v-form>
-
-			<br>
-
-
-
-			<br>
-
-	   		<v-btn
-			block light
+			block
+			light
 			style="color:#BD10E0;"
 			@click="submit"
-				>
-				LOGIN PELO FACEBOOK
+			:disabled="!valid"
+
+
+			>
+			LOGIN
 		</v-btn>
-	</v-container>
+	</v-form>
+
+	<br>
+
+
+
+	<br>
+
+	<v-btn
+	block light
+	style="color:#BD10E0;"
+	@click="submit"
+	>
+	LOGIN PELO FACEBOOK
+</v-btn>
+</v-container>
 
 
 
 </template>
 
 <script>
-  import axios from 'axios'
+import axios from 'axios'
 
-  export default {
-    data: () => ({
-      valid: false,
-	  e1: false,
-      name: '',
-	  senha:''
+export default {
+	data: () => ({
+		valid: false,
+		e1: false,
+		name: '',
+		senha:'',
+		showIframe:'',
+		token: ''
 	}),
-
-    methods: {
-      submit () {
-        if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          axios.post('/api/submit', {
-            name: this.name,
-            email: this.email,
-            select: this.select,
-            checkbox: this.checkbox
-          })
-        }
-      },
-      clear () {
-        this.$refs.form.reset()
-      }
-    }
-  }
+	mounted() {
+		//do something after mounting vue instance
+		window.addEventListener('message',(e) => {
+			this.showIframe = false
+			this.token = e.data.access_token
+		})
+	},
+	methods: {
+		submit () {
+			if (this.$refs.form.validate()) {
+				// Native form submission is not yet supported
+				axios.post('/api/submit', {
+					name: this.name,
+					senha: this.senha
+				})
+			}
+		},
+		clear () {
+			this.$refs.form.reset()
+		}
+		openAuth(){
+			this.showIframe = true;
+		}
+	}
+}
 </script>
 
 <style scoped>
@@ -77,8 +86,8 @@
 }
 
 /* .theme--light .btn.btn--disabled:not(.btn--icon):not(.btn--flat), .application .theme--light.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {
-    background-color: #940099;
-    width: 99%;
+background-color: #940099;
+width: 99%;
 } */
 .app-title {
 	font-family: ROBOTO;
