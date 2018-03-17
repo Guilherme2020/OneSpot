@@ -12,15 +12,15 @@
 				:append-icon-cb="() => (e1 = !e1)"   :type="e1 ? 'password' : 'text'"  label="Senha" color="white"></v-text-field>
 				<v-btn
 
-					block
-					light
-					style="color:#BD10E0;"
-					@click="submit"
-					:disabled="!valid"
-					>
-					LOGIN
-				</v-btn>
-			</v-form>
+				block
+				light
+				style="color:#BD10E0;"
+				@click="submit"
+				:disabled="!valid"
+				>
+				LOGIN
+			</v-btn>
+		</v-form>
 
 		<br>
 
@@ -34,10 +34,10 @@
 		@click="submit"
 		>
 		LOGIN PELO FACEBOOK
-		</v-btn>
+	</v-btn>
 
-		<!-- <iframe v-if="showIframe" src="http://api-spotify-tk.umbler.net/login"></iframe> -->
-	</v-container>
+	<!-- <iframe v-if="showIframe" src="http://api-spotify-tk.umbler.net/login"></iframe> -->
+</v-container>
 </div>
 
 
@@ -66,12 +66,14 @@ export default {
 	methods: {
 		submit () {
 			if (this.$refs.form.validate()) {
-			// 	// Native form submission is not yet supported
+				// 	// Native form submission is not yet supported
 				// this.showIframe = true;
-				axios.post('/'){
-					name = this.name,
-					senha = this.senha
-				}
+				axios.post('/api/submit', {
+
+					name: this.name,
+					senha: this.senha,
+
+				})
 			}
 		},
 		clear () {
