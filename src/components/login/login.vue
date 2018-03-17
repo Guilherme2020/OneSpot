@@ -36,7 +36,7 @@
 		LOGIN PELO FACEBOOK
 		</v-btn>
 
-		<iframe v-if="showIframe" src="http://api-spotify-tk.umbler.net/login"></iframe>
+		<!-- <iframe v-if="showIframe" src="http://api-spotify-tk.umbler.net/login"></iframe> -->
 	</v-container>
 </div>
 
@@ -58,17 +58,21 @@ export default {
 	}),
 	mounted() {
 		//do something after mounting vue instance
-		window.addEventListener('message',(e) => {
-			this.showIframe = false
-			localStorage.token = e.data.access_token
-		})
+		// window.addEventListener('message',(e) => {
+		// 	this.showIframe = false
+		// 	localStorage.token = e.data.access_token
+		// })
 	},
 	methods: {
 		submit () {
-			// if (this.$refs.form.validate()) {
+			if (this.$refs.form.validate()) {
 			// 	// Native form submission is not yet supported
-				this.showIframe = true;
-			// }
+				// this.showIframe = true;
+				axios.post('/'){
+					name = this.name,
+					senha = this.senha
+				}
+			}
 		},
 		clear () {
 			this.$refs.form.reset()
