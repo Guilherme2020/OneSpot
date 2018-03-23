@@ -8,10 +8,11 @@
 // import Dados from '@/components/data/Index.vue'
 // // import Dados from  '@/components/meusdados/Index.vue'
 import Login  from './components/login/login.vue'
-
+import Home from './components/home/home.vue'
 export const routes = [
 	{ path: '/', redirect: '/login'},
-	{ path:'/login', component:Login, title: 'Login'}
+	{ path:'/login', component:Login, title: 'Login'},
+	{ path: '/home',component:Home, title:'Home'}
 ]
 
 // export const routes = [

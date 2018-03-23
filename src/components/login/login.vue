@@ -7,19 +7,24 @@
 				<h1 class="app-title"><span class="dot">&period;</span>OneSpot</h1>
 			</v-layout>
 			<v-form v-model="valid" lazy-validation ref="form" class="mb-3" >
-				<v-text-field    v-model="name"  label="Usuário do Spotify" color="white"></v-text-field>
+				<v-text-field    v-model="name" :rules="nameRules"  label="Usuário do Spotify" color="white"></v-text-field>
 				<v-text-field v-model="senha"   :append-icon="e1 ? 'visibility' : 'visibility_off'"
 				:append-icon-cb="() => (e1 = !e1)"   :type="e1 ? 'password' : 'text'"  label="Senha" color="white"></v-text-field>
-				<v-btn
+				
+				 <router-link :to="{ path: '/home'  }" exact>
+				 	<v-btn
 
-				block
-				light
-				style="color:#BD10E0;"
-				@click="submit"
-				:disabled="!valid"
-				>
-				LOGIN
-			</v-btn>
+						block
+						light
+						style="color:#BD10E0; text-decoration:none;"
+						@click="submit"
+						:disabled="!valid"
+						>
+					LOGIN
+					</v-btn>
+				 </router-link>
+       
+	
 		</v-form>
 
 		<br>
@@ -32,6 +37,7 @@
 		block light
 		style="color:#BD10E0;"
 		@click="submit"
+		
 		>
 		LOGIN PELO FACEBOOK
 	</v-btn>
@@ -52,8 +58,14 @@ export default {
 		valid: false,
 		e1: false,
 		name: '',
+		nameRules:[
+			 v => !!v || 'E-mail is required',
+			v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+		],
+
 		senha:'',
 		showIframe:false
+
 		// token: ''
 	}),
 	mounted() {
@@ -122,9 +134,13 @@ label{
 	color:white;
 }
 .v-btn{
-	.btn--disabled{
+	/* .btn--disabled{
 		background-color: white;
-	}
+	} */
+
+}
+a{
+	text-decoration: none;
 
 }
 </style>
